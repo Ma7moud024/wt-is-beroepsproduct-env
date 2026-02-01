@@ -1,0 +1,26 @@
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container-1 {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.container-2 {
+    background-color: #e8e8e8;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.container-3 {
+    background-color: #e0e0e0;
+    padding: 20px;
+    border-radius: 8px;
+}

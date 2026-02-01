@@ -1,5 +1,12 @@
 <?php
- 
+ require_once 'db_connectie.php';
+
+$query = $verbinding ->query('SELECT username
+FROM USER s LEFT OUTER JOIN Componist n ON s.componistId = n.componistId');
+$resultraten = $query -> fetchAll();
+echo '<pre>' ,print_r($resultraten), '</pre>';
+
+
 $menu = [
     "Eten" => ["Shoarma" => 6.95, "Doner" => 4.50],
     "Drinken" => ["Cola" => 2.95, "Ayran" => 2.00],
