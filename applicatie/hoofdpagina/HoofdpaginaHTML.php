@@ -1,14 +1,6 @@
 <?php
-session_start();
-require_once 'Hoofdpagina.php';
-require_once 'HoofdpaginaDB.php';
-
-
-$menu = haalAlleProductenMetCategorieen();
-
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,55 +8,37 @@ $menu = haalAlleProductenMetCategorieen();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="hoofdpagina.css" />
+    <title>Hoofdpagina</title>
+    <link rel="stylesheet" href="hoofdpagina.css">
 </head>
 
 <body>
+    <header>
+        <nav>
+            <a href="menu.php">Menu</a>
+            <a href="profiel.php">Profiel</a>
+            <a href="registratie_login.php">Inloggen</a>
 
-    <div class="Pagina">
+            <form action="../loguit.php" method="post">
+                <button type="submit">Uitloggen</button>
+            </form>
 
-        <header>
+            <a href="winkelmandje.php">Winkelwagen</a>
+            <a href="mijnBestellingen.php">Mijn bestelling</a>
+            <a href="bestellingoverzicht_personeel.php">Personeel Bestellingen Overzicht</a>
+        </nav>
+    </header>
 
-            <h1>Hi welkom (username)</h1>
+    <main>
+        <h1>Welkom op Mahmoud pizzaria!</h1>
+        <p>Hier kunt u mijn heerlijke pizza's bestellen en genieten van een geweldige eetervaring!</p>
+        <img src="../afbeeldingen/hoofdpagina-header-foto.jpg" alt="Pizza" width="500">
 
+    </main>
 
-        </header>
-
-        <main>
-            <div class="knoppen">
-                <form action="../loginpagina/Loginpagina.html" method="get">
-                    <button type="submit">Login</button>
-                </form>
-                <form action="../uitlogen.html" method="get">
-                    <button type="submit">Uitlogen</button>
-                </form>
-                <form action="../Bestellingenstatus.html" method="get">
-                    <button type="submit">Bestellingen status</button>
-                </form>
-            </div>
-
-            <div class='menu'>
-
-                <form action="../toevoegenAanWink.html" method="get">
-                    <button type="submit">Producten pagina</button>
-                </form>
-            </div>
-
-            <?php
-            print_r($menu);
-            ?>
-
-            
-        </main>
-
-        <footer>
-
-            <h2>Footer</h2>
-
-
-        </footer>
-    </div>
+    <footer>
+        <a href="../privacyverklaring.php">Privacy Verklaring</a>
+    </footer>
 </body>
 
 </html>
