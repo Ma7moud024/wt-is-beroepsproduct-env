@@ -17,9 +17,9 @@
         <nav>
             <a href="menu.php">Menu</a>
             <a href="profiel.php">Profiel</a>
-            <a href="registratie_login.php">Inloggen</a>
+            <a href="../LoginEnRegistratie/login.php">Inloggen</a>
 
-            <form action="../loguit.php" method="post">
+            <form action="../LoginEnRegistratie/loguit.php" method="post">
                 <button type="submit">Uitloggen</button>
             </form>
 
