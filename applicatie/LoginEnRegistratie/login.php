@@ -1,7 +1,4 @@
-<?php
-session_start();
 
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +18,9 @@ session_start();
     </header>
     <main>
         <h1>Inloggen</h1>
+        <?php if (isset($_GET['error'])): ?>
+            <p style="color: red;"><?php echo htmlspecialchars($_GET['error']); ?></p>
+        <?php endif; ?>
         <form action="login_verwerking.php" method="post">
             <label for="Gebruikersnaam">Gebruikersnaam:</label>
             <input type="text" id="Gebruikersnaam" name="Gebruikersnaam" required><br><br>

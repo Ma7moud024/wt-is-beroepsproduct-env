@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +19,7 @@
     <main>
         <h1>Registreren</h1>
         <form action="registratie_verwerking.php" method="post">
+
             <label for="voornaam">Voornaam:</label>
             <input type="text" id="voornaam" name="voornaam" required><br><br>
 
@@ -30,13 +33,13 @@
             <input type="password" id="wachtwoord" name="wachtwoord" required><br><br>
 
             <label for="adres">Adres:</label>
-            <input type="text" id="adres" name="adres" required><br><br>
+            <input type="text" id="adres" name="adres" ><br><br>
 
             <label for="role">Rol:</label>
             <select id="role" name="role" required>
                 <option value="">Selecteer een rol</option>
-                <option value="klant">Klant</option>
-                <option value="personeel">Personeel</option>
+                <option value="Client">Client</option>
+                <option value="Personnel">Personnel</option>
             </select><br><br>
 
             <button type="submit">Registreren</button>

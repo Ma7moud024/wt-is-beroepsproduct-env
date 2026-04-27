@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 ?>
 
@@ -13,32 +14,36 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a href="menu.php">Menu</a>
-            <a href="profiel.php">Profiel</a>
-            <a href="../LoginEnRegistratie/login.php">Inloggen</a>
+<header>
+    <nav>
+    <a href="../Menu/Menu.php">Menu</a>
+    <a href="profiel.php">Profiel</a>
 
-            <form action="../LoginEnRegistratie/loguit.php" method="post">
-                <button type="submit">Uitloggen</button>
-            </form>
+    <?php if (!isset($_SESSION['username'])): ?>
+        <a href="../LoginEnRegistratie/login.php">Inloggen</a>
+    <?php else: ?>
+        <form action="../LoginEnRegistratie/loguit.php" method="post" style="display:inline;">
+            <button type="submit">Uitloggen</button>
+        </form>
+    <?php endif; ?>
 
-            <a href="winkelmandje.php">Winkelwagen</a>
-            <a href="mijnBestellingen.php">Mijn bestelling</a>
-            <a href="bestellingoverzicht_personeel.php">Personeel Bestellingen Overzicht</a>
-        </nav>
-    </header>
+    <a href="winkelmandje.php">Winkelwagen</a>
+    <a href="mijnBestellingen.php">Mijn bestelling</a>
+    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Personnel'): ?>
+    <a href="bestellingoverzicht_personeel.php">Personeel Bestellingen Overzicht </a>
+    <?php endif; ?>
+</nav>
+</header>
 
-    <main>
-        <h1>Welkom op Mahmoud pizzaria!</h1>
-        <p>Hier kunt u mijn heerlijke pizza's bestellen en genieten van een geweldige eetervaring!</p>
-        <img src="../afbeeldingen/hoofdpagina-header-foto.jpg" alt="Pizza" width="500">
+<main>
+    <h1>Welkom op Mahmoud pizzaria!</h1>
+    <p>Hier kunt u mijn heerlijke pizza's bestellen en genieten van een geweldige eetervaring!</p>
+    <img src="../afbeeldingen/hoofdpagina-header-foto.jpg" alt="Pizza" width="500">
+</main>
 
-    </main>
-
-    <footer>
-        <a href="../privacyverklaring.php">Privacy Verklaring</a>
-    </footer>
+<footer>
+    <a href="../privacyverklaring.php">Privacy Verklaring</a>
+</footer>
 </body>
 
 </html>
