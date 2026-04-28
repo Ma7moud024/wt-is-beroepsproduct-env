@@ -17,8 +17,6 @@ session_start();
 <header>
     <nav>
     <a href="../Menu/Menu.php">Menu</a>
-    <a href="profiel.php">Profiel</a>
-
     <?php if (!isset($_SESSION['username'])): ?>
         <a href="../LoginEnRegistratie/login.php">Inloggen</a>
     <?php else: ?>
@@ -28,9 +26,9 @@ session_start();
     <?php endif; ?>
 
     <a href="winkelmandje.php">Winkelwagen</a>
-    <a href="mijnBestellingen.php">Mijn bestelling</a>
+    <a href="../MijnBestelling/MijnBestelling.php">Mijn bestelling</a>
     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Personnel'): ?>
-    <a href="bestellingoverzicht_personeel.php">Personeel Bestellingen Overzicht </a>
+    <a href="../Personeel/Bestellingen.php">Personeel Bestellingen Overzicht </a>
     <?php endif; ?>
 </nav>
 </header>
