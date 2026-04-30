@@ -19,22 +19,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $user = $inloggen->fetch(PDO::FETCH_ASSOC);
 
-        if ($user && password_verify($_POST['wachtwoord'], $user['password'])) {
+        if ($user) {
 
-            
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['role'] = $user['role'];
+            $wachtwoordInput = $_POST['wachtwoord'];
 
-            header("Location: ../hoofdpagina/hoofdpaginaHTML.php");
-            exit;
+            $isGeldig = false;
 
-        } else {
-            
-            $error = "Foute gebruikersnaam of wachtwoord";
-            header("Location: login.php?error=" . urlencode($error));
-            exit;
+            if (password_verify($wachtwoordInput, $user['password'])) {
+                $isGeldig = true;
+            }
+            elseif ($wachtwoordInput === $user['password']) {
+                $isGeldig = true;
+            }
+
+            if ($isGeldig) {
+
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['role'] = $user['role'];
+
+                header("Location: ../hoofdpagina/hoofdpaginaHTML.php");
+                exit;
+            } else {
+                $error = "Foute gebruikersnaam of wachtwoord";
+                header("Location: login.php?error=" . urlencode($error));
+                exit;
+            }
         }
-
-    } 
+    }
 }
 ?>
