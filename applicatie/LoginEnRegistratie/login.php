@@ -19,7 +19,7 @@
     <main>
         <h1>Inloggen</h1>
         <?php if (isset($_GET['error'])): ?>
-            <p style="color: red;"><?php echo htmlspecialchars($_GET['error']); ?></p>
+            <p style="color: red;"><?php echo ($_GET['error']); ?></p>
         <?php endif; ?>
         <form action="login_verwerking.php" method="post">
             <label for="Gebruikersnaam">Gebruikersnaam:</label>

@@ -25,7 +25,7 @@ session_start();
         </form>
     <?php endif; ?>
 
-    <a href="winkelmandje.php">Winkelwagen</a>
+    <a href="../BestellingPlaatsen/BestellingPlaatsen.php">Winkelwagen</a>
     <a href="../MijnBestelling/MijnBestelling.php">Mijn bestelling</a>
     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Personnel'): ?>
     <a href="../Personeel/Bestellingen.php">Personeel Bestellingen Overzicht </a>

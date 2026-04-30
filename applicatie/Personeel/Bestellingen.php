@@ -50,18 +50,18 @@ $bestellingen = BestellingenOphalen();
                 </li>
                 <p>Pas hier de status van bestelling!</p>
                 <form action="" method="post" style="display:inline;">
-                    <input type="hidden" name="order_id" value="<?php echo htmlspecialchars($bestelling['order_id']); ?>">
+                    <input type="hidden" name="order_id" value="<?php echo ($bestelling['order_id']); ?>">
                     <input type="hidden" name="status" value="1">
                     <button type="submit">In behandeling</button>
                 </form>
                 <form action="" method="post" style="display:inline;">
-                    <input type="hidden" name="order_id" value="<?php echo htmlspecialchars($bestelling['order_id']); ?>">
+                    <input type="hidden" name="order_id" value="<?php echo ($bestelling['order_id']); ?>">
                     <input type="hidden" name="status" value="2">
                     <button type="submit">Onderweg</button>
                 </form>
 
                 <form action="" method="post" style="display:inline;">
-                    <input type="hidden" name="order_id" value="<?php echo htmlspecialchars($bestelling['order_id']); ?>">
+                    <input type="hidden" name="order_id" value="<?php echo ($bestelling['order_id']); ?>">
                     <input type="hidden" name="status" value="3">
                     <button type="submit">Afgeleverd</button>
                 </form>
