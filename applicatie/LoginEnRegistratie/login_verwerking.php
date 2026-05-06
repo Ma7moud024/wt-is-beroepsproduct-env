@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 require_once '../db_connectie.php';
@@ -22,18 +21,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($user) {
 
             $wachtwoordInput = $_POST['wachtwoord'];
-
             $isGeldig = false;
 
             if (password_verify($wachtwoordInput, $user['password'])) {
                 $isGeldig = true;
-            }
-            elseif ($wachtwoordInput === $user['password']) {
+            } elseif ($wachtwoordInput === $user['password']) {
                 $isGeldig = true;
             }
 
             if ($isGeldig) {
-
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['role'] = $user['role'];
 
@@ -44,7 +40,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header("Location: login.php?error=" . urlencode($error));
                 exit;
             }
+        } else {
+            $error = "Foute gebruikersnaam of wachtwoord";
+            header("Location: login.php?error=" . urlencode($error));
+            exit;
         }
+    } else {
+        $error = "Vul alle velden in";
+        header("Location: login.php?error=" . urlencode($error));
+        exit;
     }
+} else {
+    header("Location: login.php");
+    exit;
 }
-?>
