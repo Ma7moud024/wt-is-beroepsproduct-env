@@ -2,6 +2,28 @@
 session_start();
 
 $username = $_SESSION['username'] ?? null;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_cart'])) {
+    $updatedQuantities = $_POST['quantity'] ?? [];
+
+    foreach ($_SESSION['bestelling'] as $index => $item) {
+        $product_name = $item['product_name'] ?? '';
+        if (!isset($updatedQuantities[$product_name])) {
+            continue;
+        }
+
+        $newQuantity = intval($updatedQuantities[$product_name]);
+        if ($newQuantity > 0) {
+            $_SESSION['bestelling'][$index]['quantity'] = $newQuantity;
+        } else {
+            unset($_SESSION['bestelling'][$index]);
+        }
+    }
+
+    $_SESSION['bestelling'] = array_values($_SESSION['bestelling']);
+    header('Location: BestellingPlaatsen.php');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -16,41 +38,44 @@ $username = $_SESSION['username'] ?? null;
 
 <body>
     <header>
-        <nav>
-            <a href="../hoofdpagina/hoofdpaginaHTML.php">Home</a>
-        </nav>
+        <?php include __DIR__ . '/../header.php'; ?>
     </header>
     <main>
         <h1>Bestelling Plaatsen</h1>
-        <li>
-            <ul>
-                <?php if (!empty($_SESSION['bestelling']) && is_array($_SESSION['bestelling'])): ?>
+        <?php if (!empty($_SESSION['bestelling']) && is_array($_SESSION['bestelling'])): ?>
+            <form method="post" action="BestellingPlaatsen.php">
+                <ul>
                     <?php foreach ($_SESSION['bestelling'] as $item): ?>
                         <li>
-                            <strong><?php echo $item['product_name']; ?></strong> - Aantal: <?php echo $item['quantity']; ?>
+                            <strong><?php echo htmlspecialchars($item['product_name']); ?></strong>
+                            - Aantal:
+                            <input type="number"
+                                name="quantity[<?php echo htmlspecialchars($item['product_name']); ?>]"
+                                value="<?php echo intval($item['quantity']); ?>"
+                                min="0"
+                                style="width: 60px;">
                         </li>
                     <?php endforeach; ?>
-                <?php else: ?>
-                    <p>Geen producten in je bestelling.</p>
-                <?php endif; ?>
-            </ul>
-        </li>
+                </ul>
+                <button type="submit" name="update_cart">Winkelwagen bijwerken</button>
+            </form>
+        <?php else: ?>
+            <p>Geen producten in je bestelling.</p>
+        <?php endif; ?>
         <div>
 
         </div>
         <form method="post" action="BestellingPlaatsenDB.php">
             <input type="hidden" name="username" value="<?php echo ($username); ?>">
             <label for="address">Voer uw adres in als het anders is dan uw geregistreerde adres:</label>
-            <input type="text" name ="address"  >
+            <input type="text" name="address">
             <button type="submit">Bestelling Plaatsen</button>
         </form>
 
 
     </main>
 
-    <footer>
-        <a href="../privacyverklaring.php">Privacy Verklaring</a>
-    </footer>
+    <?php include __DIR__ . '/../footer.php'; ?>
 
 </body>
 

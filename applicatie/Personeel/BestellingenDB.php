@@ -1,7 +1,8 @@
 <?php
-require_once '../db_connectie.php';
 
-function BestellingenOphalen() {
+
+function bestellingenOphalen()
+{
     $bestelling = maakVerbinding()->prepare("
         SELECT 
             Pizza_Order_Product.product_name, 
@@ -19,11 +20,10 @@ function BestellingenOphalen() {
     return $bestelling->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function StatusUpdaten($order_id, $status) {
+function statusUpdaten($order_id, $status)
+{
     $statusUpdaten = maakVerbinding()->prepare("
         UPDATE Pizza_Order SET status = ? WHERE order_id = ?
     ");
     $statusUpdaten->execute([$status, $order_id]);
 }
-
-?>

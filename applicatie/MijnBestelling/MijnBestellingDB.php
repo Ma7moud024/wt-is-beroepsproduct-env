@@ -1,9 +1,7 @@
 <?php
 
-
-require_once '../db_connectie.php';
-
-function MijnBestellingenOphalen($client_username) {
+function mijnBestellingenOphalen($client_username)
+{
     $bestelling = maakVerbinding()->prepare("
         SELECT 
             Pizza_Order_Product.product_name, 
@@ -18,7 +16,4 @@ function MijnBestellingenOphalen($client_username) {
     ");
     $bestelling->execute([$client_username]);
     return $bestelling->fetchAll(PDO::FETCH_ASSOC);
-
 }
-
-?>

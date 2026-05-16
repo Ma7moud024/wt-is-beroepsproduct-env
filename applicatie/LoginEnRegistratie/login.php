@@ -1,5 +1,4 @@
-
-
+<?php ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,14 +11,12 @@
 
 <body>
     <header>
-        <nav>
-            <a href="../hoofdpagina/hoofdpaginaHTML.php">Home</a>
-        </nav>
+        <?php include __DIR__ . '/../header.php'; ?>
     </header>
     <main>
         <h1>Inloggen</h1>
         <?php if (isset($_GET['error'])): ?>
-            <p style="color: red;"><?php echo ($_GET['error']); ?></p>
+            <p style="color: red;"><?php echo htmlspecialchars($_GET['error']); ?></p>
         <?php endif; ?>
         <form action="login_verwerking.php" method="post">
             <label for="Gebruikersnaam">Gebruikersnaam:</label>
@@ -32,9 +29,7 @@
         </form>
         <p>Heb je nog geen account? <a href="../LoginEnRegistratie/registratie.php">Registreer hier</a>.</p>
     </main>
-    <footer>
-        <a href="../privacyverklaring.php">Privacy Verklaring</a>
-    </footer>
+    <?php include __DIR__ . '/../footer.php'; ?>
 
 </body>
 

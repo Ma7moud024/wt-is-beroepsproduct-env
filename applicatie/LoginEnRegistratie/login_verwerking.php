@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../db_connectie.php';
+require_once __DIR__ . '/../db_connectie.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['role'] = $user['role'];
 
-                header("Location: ../hoofdpagina/hoofdpaginaHTML.php");
+                header("Location: ../hoofdpagina/hoofdpagina.php");
                 exit;
             } else {
                 $error = "Foute gebruikersnaam of wachtwoord";

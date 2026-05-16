@@ -2,5 +2,5 @@
 session_start();
 session_unset();
 session_destroy();
-header("Location: ../hoofdpagina/hoofdpaginaHTML.php");
+header("Location: ../hoofdpagina/hoofdpagina.php");
 exit;

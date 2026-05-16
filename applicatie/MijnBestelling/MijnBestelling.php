@@ -1,18 +1,4 @@
-<?php
-session_start();
-require_once('../MijnBestelling/MijnBestellingDB.php');
-
-
-if (isset($_SESSION['username'])) {
-    $client_username = $_SESSION['username'];
-    $bestellingen = MijnBestellingenOphalen($client_username);
-} else {
-    header("Location: ../LoginEnRegistratie/login.php");
-    exit();
-}
-?>
-
-
+<?php require_once __DIR__ . '/MijnBestellingLogica.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,9 +12,7 @@ if (isset($_SESSION['username'])) {
 
 <body>
     <header>
-        <nav>
-            <a href="../hoofdpagina/hoofdpaginaHTML.php">Home</a>
-        </nav>
+        <?php include __DIR__ . '/../header.php'; ?>
     </header>
     <main>
         <h1>Mijn Bestelling</h1>
@@ -52,9 +36,7 @@ if (isset($_SESSION['username'])) {
             <?php endforeach; ?>
         </table>
     </main>
-    <footer>
-        <a href="../privacyverklaring.php">Privacy Verklaring</a>
-    </footer>
+    <?php include __DIR__ . '/../footer.php'; ?>
 
 </body>
 

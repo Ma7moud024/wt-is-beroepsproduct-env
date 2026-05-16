@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -10,9 +13,7 @@
 
 <body>
     <header>
-        <nav>
-            <a href="../hoofdpagina/hoofdpaginaHTML.php">Home</a>
-        </nav>
+        <?php include __DIR__ . '/header.php'; ?>
     </header>
 
     <main>

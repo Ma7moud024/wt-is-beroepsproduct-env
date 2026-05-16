@@ -1,4 +1,4 @@
-
+<?php ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,9 +12,7 @@
 
 <body>
     <header>
-        <nav>
-            <a href="../hoofdpagina/hoofdpaginaHTML.php">Home</a>
-        </nav>
+        <?php include __DIR__ . '/../header.php'; ?>
     </header>
     <main>
         <h1>Registreren</h1>
@@ -33,23 +31,14 @@
             <input type="password" id="wachtwoord" name="wachtwoord" required><br><br>
 
             <label for="adres">Adres:</label>
-            <input type="text" id="adres" name="adres" ><br><br>
-
-            <label for="role">Rol:</label>
-            <select id="role" name="role" required>
-                <option value="">Selecteer een rol</option>
-                <option value="Client">Client</option>
-                <option value="Personnel">Personnel</option>
-            </select><br><br>
+            <input type="text" id="adres" name="adres"><br><br>
 
             <button type="submit">Registreren</button>
         </form>
         <p>Heb je al een account? <a href="login.php">Log hier in</a>.</p>
 
     </main>
-    <footer>
-        <a href="../privacyverklaring.php">Privacy Verklaring</a>
-    </footer>
+    <?php include __DIR__ . '/../footer.php'; ?>
 
 </body>
 

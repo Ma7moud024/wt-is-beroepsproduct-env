@@ -1,12 +1,4 @@
-<?php
-require_once 'BestellingenDB.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    StatusUpdaten($_POST['order_id'], $_POST['status']);
-}
-
-$bestellingen = BestellingenOphalen();
-?>
+<?php require_once __DIR__ . '/BestellingLogica.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,14 +12,10 @@ $bestellingen = BestellingenOphalen();
 
 <body>
     <header>
-        <nav>
-            <a href="../hoofdpagina/hoofdpaginaHTML.php">Home</a>
-        </nav>
-
+        <?php include __DIR__ . '/../header.php'; ?>
     </header>
     <main>
         <h1>Bestellingen</h1>
-
         <ul>
             <?php foreach ($bestellingen as $bestelling): ?>
                 <li>
@@ -59,7 +47,6 @@ $bestellingen = BestellingenOphalen();
                     <input type="hidden" name="status" value="2">
                     <button type="submit">Onderweg</button>
                 </form>
-
                 <form action="" method="post" style="display:inline;">
                     <input type="hidden" name="order_id" value="<?php echo ($bestelling['order_id']); ?>">
                     <input type="hidden" name="status" value="3">
@@ -68,9 +55,7 @@ $bestellingen = BestellingenOphalen();
             <?php endforeach; ?>
         </ul>
     </main>
-    <footer>
-        <a href="../privacyverklaring.php">Privacy Verklaring</a>
-    </footer>
+    <?php include __DIR__ . '/../footer.php'; ?>
 </body>
 
 </html>
