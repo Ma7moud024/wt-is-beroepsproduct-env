@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             if ($isGeldig) {
+                session_regenerate_id(true);
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['role'] = $user['role'];
 

@@ -1,7 +1,12 @@
 <?php
 session_start();
 
-$username = $_SESSION['username'] ?? null;
+if (!isset($_SESSION['username'])) {
+    header("Location: ../LoginEnRegistratie/login.php");
+    exit;
+}
+
+$username = $_SESSION['username'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_cart'])) {
     $updatedQuantities = $_POST['quantity'] ?? [];
@@ -66,7 +71,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_cart'])) {
 
         </div>
         <form method="post" action="BestellingPlaatsenDB.php">
-            <input type="hidden" name="username" value="<?php echo ($username); ?>">
             <label for="address">Voer uw adres in als het anders is dan uw geregistreerde adres:</label>
             <input type="text" name="address">
             <button type="submit">Bestelling Plaatsen</button>

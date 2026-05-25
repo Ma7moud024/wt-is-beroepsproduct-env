@@ -4,9 +4,14 @@ session_start();
 require_once __DIR__ . '/../db_connectie.php';
 require_once __DIR__ . '/BestellingPlaatsenFuncties.php';
 
+if (!isset($_SESSION['username'])) {
+    header("Location: ../LoginEnRegistratie/login.php");
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $username = $_POST['username'];
+    $username = $_SESSION['username'];
     $bestelling = $_SESSION['bestelling'] ?? [];
 
     $gegevens = gebruikerGegevensOphalen($username);
