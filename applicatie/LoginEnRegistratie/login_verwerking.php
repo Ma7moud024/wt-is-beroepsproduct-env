@@ -4,7 +4,7 @@ require_once __DIR__ . '/../db_connectie.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    if (isset($_POST['Gebruikersnaam'], $_POST['wachtwoord'])) {
+    if (isset($_POST['gebruikersnaam'], $_POST['wachtwoord'])) {
 
         $inloggen = maakVerbinding()->prepare("
             SELECT username, password, role 
@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ");
 
         $inloggen->execute([
-            ':username' => $_POST['Gebruikersnaam']
+            ':username' => $_POST['gebruikersnaam']
         ]);
 
         $user = $inloggen->fetch(PDO::FETCH_ASSOC);

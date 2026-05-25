@@ -22,37 +22,37 @@ $afbeeldingen = [
     'Combinatiemaaltijd'  => 'download.png',
 ];
 
-$Ingrediënten = maakVerbinding()->prepare("
-    SELECT Product.name, product_Ingredient.ingredient_name 
-    FROM Product 
+$ingredientenQuery = maakVerbinding()->prepare("
+    SELECT Product.name, product_Ingredient.ingredient_name
+    FROM Product
     INNER JOIN product_Ingredient ON Product.name = product_Ingredient.product_name
 ");
-$Ingrediënten->execute();
-$alleIngrediënten = $Ingrediënten->fetchAll(PDO::FETCH_ASSOC);
+$ingredientenQuery->execute();
+$alleIngredienten = $ingredientenQuery->fetchAll(PDO::FETCH_ASSOC);
 
-$ingrediëntenPerProduct = [];
-foreach ($alleIngrediënten as $rij) {
-    $ingrediëntenPerProduct[$rij['name']][] = $rij['ingredient_name'];
+$ingredientenPerProduct = [];
+foreach ($alleIngredienten as $rij) {
+    $ingredientenPerProduct[$rij['name']][] = $rij['ingredient_name'];
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $product_name = $_POST['product_name'];
-    $quantity = max(1, intval($_POST['quantity']));
+    $productNaam = $_POST['product_name'];
+    $aantal = max(1, intval($_POST['quantity']));
 
-    $found = false;
+    $gevonden = false;
     foreach ($_SESSION['bestelling'] as &$item) {
-        if ($item['product_name'] === $product_name) {
-            $item['quantity'] += $quantity;
-            $found = true;
+        if ($item['product_name'] === $productNaam) {
+            $item['quantity'] += $aantal;
+            $gevonden = true;
             break;
         }
     }
     unset($item);
 
-    if (!$found) {
+    if (!$gevonden) {
         $_SESSION['bestelling'][] = [
-            'product_name' => $product_name,
-            'quantity' => $quantity,
+            'product_name' => $productNaam,
+            'quantity'     => $aantal,
         ];
     }
 

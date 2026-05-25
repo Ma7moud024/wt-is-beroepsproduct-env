@@ -21,7 +21,7 @@ require_once __DIR__ . '/ProductLogica.php';
     <main>
         <h1>Menu</h1>
         <div class="producten-grid">
-            <?php product($producten, $afbeeldingen, $ingrediëntenPerProduct); ?>
+            <?php product($producten, $afbeeldingen, $ingredientenPerProduct); ?>
         </div>
 
     </main>

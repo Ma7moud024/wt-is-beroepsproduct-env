@@ -21,11 +21,11 @@
             <label for="voornaam">Voornaam:</label>
             <input type="text" id="voornaam" name="voornaam" required><br><br>
 
-            <label for="Achternaam">Achternaam:</label>
-            <input type="text" id="Achternaam" name="Achternaam" required><br><br>
+            <label for="achternaam">Achternaam:</label>
+            <input type="text" id="achternaam" name="achternaam" required><br><br>
 
-            <label for="Gebruikersnaam">Gebruikersnaam:</label>
-            <input type="text" id="Gebruikersnaam" name="Gebruikersnaam" required><br><br>
+            <label for="gebruikersnaam">Gebruikersnaam:</label>
+            <input type="text" id="gebruikersnaam" name="gebruikersnaam" required><br><br>
 
             <label for="wachtwoord">Wachtwoord:</label>
             <input type="password" id="wachtwoord" name="wachtwoord" required><br><br>

@@ -11,33 +11,33 @@ if (!isset($_SESSION['username'])) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $username = $_SESSION['username'];
+    $gebruikersnaam = $_SESSION['username'];
     $bestelling = $_SESSION['bestelling'] ?? [];
 
-    $gegevens = gebruikerGegevensOphalen($username);
-    $client_name = $gegevens['client_name'];
+    $gegevens = gebruikerGegevensOphalen($gebruikersnaam);
+    $clientNaam = $gegevens['client_name'];
 
     if (!empty($_POST['address'])) {
-        $address = $_POST['address'];
+        $adres = $_POST['address'];
     } else {
-        $address = $gegevens['address'];
+        $adres = $gegevens['address'];
     }
 
-    $personnel_username = personeelOphalen();
+    $personeelsnaam = personeelOphalen();
 
-    $order_id = gebruikerBestellingPlaatsen(
-        $username,
-        $client_name,
-        $address,
-        $personnel_username
+    $bestellingId = gebruikerBestellingPlaatsen(
+        $gebruikersnaam,
+        $clientNaam,
+        $adres,
+        $personeelsnaam
     );
 
     foreach ($bestelling as $item) {
-        $product_name = $item['product_name'] ?? null;
-        $quantity = $item['quantity'] ?? 0;
+        $productNaam = $item['product_name'] ?? null;
+        $aantal = $item['quantity'] ?? 0;
 
-        if ($product_name && $quantity > 0) {
-            gebruikerProductenToevoegen($order_id, $product_name, $quantity);
+        if ($productNaam && $aantal > 0) {
+            gebruikerProductenToevoegen($bestellingId, $productNaam, $aantal);
         }
     }
 

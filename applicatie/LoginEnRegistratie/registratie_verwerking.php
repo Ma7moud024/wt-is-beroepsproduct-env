@@ -2,7 +2,7 @@
 session_start();
 require_once __DIR__ . '/../db_connectie.php';
 
-$vereist = ['Gebruikersnaam', 'wachtwoord', 'voornaam', 'Achternaam', 'adres'];
+$vereist = ['gebruikersnaam', 'wachtwoord', 'voornaam', 'achternaam', 'adres'];
 foreach ($vereist as $veld) {
     if (empty($_POST[$veld])) {
         header("Location: registratie.php?error=" . urlencode("Vul alle velden in"));
@@ -13,22 +13,22 @@ foreach ($vereist as $veld) {
 $db = maakVerbinding();
 
 $bestaatAl = $db->prepare("SELECT 1 FROM [User] WHERE username = :username");
-$bestaatAl->execute([':username' => $_POST['Gebruikersnaam']]);
+$bestaatAl->execute([':username' => $_POST['gebruikersnaam']]);
 if ($bestaatAl->fetchColumn()) {
     header("Location: registratie.php?error=" . urlencode("Gebruikersnaam is al in gebruik"));
     exit;
 }
 
-$niuewGebruiker = $db->prepare("
+$nieuweGebruiker = $db->prepare("
     INSERT INTO [User] (username, password, first_name, last_name, role, address)
-    VALUES (:Gebruikersnaam, :wachtwoord, :voornaam, :Achternaam, :role, :adres)
+    VALUES (:gebruikersnaam, :wachtwoord, :voornaam, :achternaam, :role, :adres)
 ");
 
-$niuewGebruiker->execute([
-    ':Gebruikersnaam' => $_POST['Gebruikersnaam'],
+$nieuweGebruiker->execute([
+    ':gebruikersnaam' => $_POST['gebruikersnaam'],
     ':wachtwoord'     => password_hash($_POST['wachtwoord'], PASSWORD_DEFAULT),
     ':voornaam'       => $_POST['voornaam'],
-    ':Achternaam'     => $_POST['Achternaam'],
+    ':achternaam'     => $_POST['achternaam'],
     ':role'           => 'Client',
     ':adres'          => $_POST['adres']
 ]);

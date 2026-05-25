@@ -4,8 +4,8 @@ session_start();
 require_once __DIR__ . '/MijnBestellingDB.php';
 
 if (isset($_SESSION['username'])) {
-    $client_username = $_SESSION['username'];
-    $bestellingen = mijnBestellingenOphalen($client_username);
+    $gebruikersnaam = $_SESSION['username'];
+    $bestellingen = mijnBestellingenOphalen($gebruikersnaam);
 } else {
     header("Location: ../LoginEnRegistratie/login.php");
     exit();

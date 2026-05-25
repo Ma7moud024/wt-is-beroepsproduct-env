@@ -19,8 +19,8 @@
             <p style="color: red;"><?php echo htmlspecialchars($_GET['error']); ?></p>
         <?php endif; ?>
         <form action="login_verwerking.php" method="post">
-            <label for="Gebruikersnaam">Gebruikersnaam:</label>
-            <input type="text" id="Gebruikersnaam" name="Gebruikersnaam" required><br><br>
+            <label for="gebruikersnaam">Gebruikersnaam:</label>
+            <input type="text" id="gebruikersnaam" name="gebruikersnaam" required><br><br>
 
             <label for="wachtwoord">Wachtwoord:</label>
             <input type="password" id="wachtwoord" name="wachtwoord" required><br><br>

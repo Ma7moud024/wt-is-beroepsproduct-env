@@ -20,10 +20,10 @@ function bestellingenOphalen()
     return $bestelling->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function statusUpdaten($order_id, $status)
+function statusUpdaten($bestellingId, $status)
 {
     $statusUpdaten = maakVerbinding()->prepare("
         UPDATE Pizza_Order SET status = ? WHERE order_id = ?
     ");
-    $statusUpdaten->execute([$status, $order_id]);
+    $statusUpdaten->execute([$status, $bestellingId]);
 }

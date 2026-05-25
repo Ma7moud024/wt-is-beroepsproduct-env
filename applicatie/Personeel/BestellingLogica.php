@@ -9,10 +9,10 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'Personnel') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $order_id = filter_input(INPUT_POST, 'order_id', FILTER_VALIDATE_INT);
-    $status   = filter_input(INPUT_POST, 'status',   FILTER_VALIDATE_INT);
-    if ($order_id && $status !== false) {
-        statusUpdaten($order_id, $status);
+    $bestellingId = filter_input(INPUT_POST, 'order_id', FILTER_VALIDATE_INT);
+    $status       = filter_input(INPUT_POST, 'status',   FILTER_VALIDATE_INT);
+    if ($bestellingId && $status !== false) {
+        statusUpdaten($bestellingId, $status);
     }
 }
 
